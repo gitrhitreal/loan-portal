@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loans</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .loan-option {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    .loan-option:hover { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h2>Select a Loan Option</h2>
+  <div class="loan-option" onclick="selectLoan('Home Loan', 'Interest: 7%, Tenure: 20 years')">Home Loan</div>
+  <div class="loan-option" onclick="selectLoan('Car Loan', 'Interest: 9%, Tenure: 5 years')">Car Loan</div>
+  <div class="loan-option" onclick="selectLoan('Education Loan', 'Interest: 5%, Tenure: 10 years')">Education Loan</div>
+
+  <script>
+    function selectLoan(type, details) {
+      // save selection
+      localStorage.setItem("loanType", type);
+      localStorage.setItem("loanDetails", details);
+
+      // redirect to loan-details.html
+      window.location.href = "loan-details.html";
+    }
+  </script>
+</body>
+</html>

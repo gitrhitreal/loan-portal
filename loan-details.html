@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      padding: 20px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      padding: 10px;
+      background: #5a67d8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:hover {
+      background: #434190;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Home Loan Details</h2>
+    <p><b>Interest:</b> 7.5%</p>
+    <p><b>Collateral Rating:</b> A</p>
+    <p><b>Credit Score:</b> 750</p>
+    <p><b>Market Condition:</b> Good</p>
+    <p><b>Loan Type:</b> Personal</p>
+    <button id="approveBtn">Approve</button>
+  </div>
+
+  <script>
+  document.getElementById("approveBtn").addEventListener("click", function() {
+    fetch("https://script.google.com/macros/s/AKfycbyB4yV51uzQbYYpKRB2g6boDLE2gTdyzxwhgknuLcv-XTGz_-hvnZUplMJ3tMYvzDgz/exec", {
+      method: "POST",
+      body: new URLSearchParams({
+        loanType: "Personal",
+        interest: "7.5%",
+        collateral: "A",
+        creditScore: "750",
+        marketCondition: "Good"
+      })
+    })
+    .then(res => res.text())
+    .then(data => {
+      alert("✅ Loan approved and saved to Google Sheets!");
+      window.location.href = "loans.html"; // back to loan options
+    })
+    .catch(err => alert("❌ Error: " + err));
+  });
+  </script>
+</body>
+</html>
